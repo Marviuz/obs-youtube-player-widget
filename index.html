@@ -270,7 +270,7 @@
         }
       }
 
-      var widgetUrl = new URL(`/on-${_state.value}.html`, window.location.origin);
+      var widgetUrl = new URL(`/on-${_state.value}.html`, window.location.origin + window.location.pathname);
       for (var k in data) {
         widgetUrl.searchParams.append(k, typeof data[k] === 'string' ? data[k] : data[k].join(','));
       }
