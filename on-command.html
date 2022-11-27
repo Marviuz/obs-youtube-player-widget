@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/comfy.js@latest/dist/comfy.min.js"></script>
+</head>
+
+<body>
+  <div id="player-container" style="height: 100vh; width: 100vw;">
+    <div id="player"></div>
+  </div>
+  <script src="./scripts.js"></script>
+  <script>
+    var allowed = urlParams.get('allowed').split(',');
+
+    ComfyJS.onCommand = (user, command, message, flags, extra) => {
+      var isAllowed = allowed === 'everyone' || allowed.some(_allowed => flags[_allowed]);
+      if (command === "ytwatch" && (flags.broadcaster || isAllowed)) {
+        try {
+          new URL(message); // Check if it's a URL
+          message = getYoutubeId(message);
+        } catch (err) { /* Not a url */ }
+
+        queue.push(message);
+        playQueue();
+      } else if (command === 'ytstop' && (flags.broadcaster || flags.mod)) { // Only broadcaster & mod can stop
+        resetPlayer();
+      }
+    };
+    ComfyJS.Init(channel);
+
+  </script>
+</body>
+
+</html>
