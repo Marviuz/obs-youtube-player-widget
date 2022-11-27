@@ -6,9 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OBS Youtube Player Widget by Marviuz</title>
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
   <meta name="title" content="OBS Youtube Player Widget">
   <meta name="description"
-    content="An OBS widget for twitch that automatically playa a Youtube video when a viewers demands it.">
+    content="An OBS widget for twitch that automatically plays a Youtube video when a viewers demands it.">
   <meta name="keywords" content="OBS,Youtube,Player,Twitch">
   <meta name="robots" content="index, follow">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -19,51 +20,61 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="bg-gray-700">
   <div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="w-full max-w-md space-y-8">
+
+
+      <div>
+        <img class="mx-auto h-40 w-auto" src="./Logo.png" alt="Your Company">
+        <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-white">OBS Youtube Player Widget</h2>
+        <p class="mt-2 text-center text-sm text-white">
+          An OBS widget for twitch that automatically plays a Youtube video when a viewers demands it.
+        </p>
+      </div>
+
       <form id="widgetDetails" class="mt-8 space-y-6">
 
         <div class="-space-y-px rounded-md shadow-sm">
-          <label for="channelName" class="contents text-base font-medium text-gray-900">Twitch Channel</label>
+          <label for="channelName" class="contents text-base font-medium text-white">Twitch Channel</label>
           <div class="flex">
             <span
-              class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500">https://twitch.tv/</span>
+              class="inline-flex items-center rounded-l-md border border-r-0 border-black-300 bg-gray-800 px-3 text-sm text-white">https://twitch.tv/</span>
             <input type="text" placeholder="Channel Name" name="channel" id="channelName" required
-              class="relative block w-full appearance-none rounded-none rounded-r-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+              class="focus:outline-none relative block w-full appearance-none rounded-none rounded-r-md border border-gray-300 px-3 py-2 placeholder-gray-400 sm:text-sm bg-gray-900 text-white">
           </div>
         </div>
 
         <fieldset>
-          <legend class="contents text-base font-medium text-gray-900">Command or redeem?</legend>
+          <legend class="contents text-base font-medium text-white">Command or redeem?</legend>
           <div class="mt-4 space-y-4">
             <div class="flex items-center">
               <input type="radio" name="type" value="command" id="command"
-                class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
-              <label for="command" class="ml-3 block text-sm font-medium text-gray-700">Command</label>
+                class="h-4 w-4 border-gray-300 text-indigo-600">
+              <label for="command" class="ml-3 block text-sm font-medium text-white">Command</label>
             </div>
 
             <div class="flex items-center">
               <input type="radio" name="type" value="redeem" id="redeem"
-                class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
-              <label for="redeem" class="ml-3 block text-sm font-medium text-gray-700">Redeem</label>
+                class="h-4 w-4 border-gray-300 text-indigo-600">
+              <label for="redeem" class="ml-3 block text-sm font-medium text-white">Redeem</label>
             </div>
           </div>
         </fieldset>
 
         <div class="-space-y-px rounded-md shadow-sm">
           <div>
-            <label for="channelName" class="contents text-base font-medium text-gray-900">Limit in seconds</label>
+            <label for="channelName" class="contents text-base font-medium text-white">Limit in seconds</label>
             <input type="number" placeholder="Limit" name="limit" min="0" value="0" required
-              class="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+              class="focus:outline-none relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 sm:text-sm bg-gray-900 text-white">
           </div>
         </div>
 
 
         <div id="rewardIdContainer" class="-space-y-px rounded-md shadow-sm">
-          <label for="rewardId" class="contents text-base font-medium text-gray-900">Channel Points reward ID</label>
+          <label for="rewardId" class="contents text-base font-medium text-white">Channel Points reward ID</label>
           <div>
-            <ol class="my-2 text-sm text-gray-500 list-decimal list-inside">
+            <ol class="my-2 text-sm text-white list-decimal list-inside">
               <li>Be sure to have inputted your channel name above.</li>
               <li>
                 <span>Click the</span>
@@ -82,10 +93,10 @@
           </div>
           <div class="flex">
             <input type="text" name="rewardId" readonly id="rewardId"
-              class="relative block w-full appearance-none rounded-l-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+              class="focus:outline-none relative block w-full appearance-none rounded-l-md border border-gray-300 px-3 py-2 placeholder-gray-500 sm:text-sm  bg-gray-900 text-white">
 
             <button id="rewardIdBtn" type="button" onclick="linkChannel()"
-              class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500">
+              class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 bg-gray-800 px-3 text-sm text-white">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -97,56 +108,56 @@
         </div>
 
         <fieldset id="allowedUsers">
-          <legend class="contents text-base font-medium text-gray-900">Allowed users</legend>
+          <legend class="contents text-base font-medium text-white">Allowed users</legend>
           <div class="mt-4 space-y-4">
 
             <div class="flex items-start">
               <div class="flex h-5 items-center">
                 <input type="checkbox" name="allowed" value="mod" id="mod"
-                  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                  class="h-4 w-4 rounded border-gray-300 text-indigo-600">
               </div>
               <div class="ml-3 text-sm">
-                <label for="mod" class="font-medium text-gray-700">Mod</label>
+                <label for="mod" class="font-medium text-white">Mod</label>
               </div>
             </div>
 
             <div class="flex items-start">
               <div class="flex h-5 items-center">
                 <input type="checkbox" name="allowed" value="founder" id="founder"
-                  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                  class="h-4 w-4 rounded border-gray-300 text-indigo-600">
               </div>
               <div class="ml-3 text-sm">
-                <label for="founder" class="font-medium text-gray-700">Founder</label>
+                <label for="founder" class="font-medium text-white">Founder</label>
               </div>
             </div>
 
             <div class="flex items-start">
               <div class="flex h-5 items-center">
                 <input type="checkbox" name="allowed" value="subscriber" id="subscriber"
-                  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                  class="h-4 w-4 rounded border-gray-300 text-indigo-600">
               </div>
               <div class="ml-3 text-sm">
-                <label for="subscriber" class="font-medium text-gray-700">Subscriber</label>
+                <label for="subscriber" class="font-medium text-white">Subscriber</label>
               </div>
             </div>
 
             <div class="flex items-start">
               <div class="flex h-5 items-center">
                 <input type="checkbox" name="allowed" value="vip" id="vip"
-                  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                  class="h-4 w-4 rounded border-gray-300 text-indigo-600">
               </div>
               <div class="ml-3 text-sm">
-                <label for="vip" class="font-medium text-gray-700">VIP</label>
+                <label for="vip" class="font-medium text-white">VIP</label>
               </div>
             </div>
 
             <div class="flex items-start">
               <div class="flex h-5 items-center">
                 <input type="checkbox" name="allowed" value="everyone" id="everyone" checked
-                  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                  class="h-4 w-4 rounded border-gray-300 text-indigo-600">
               </div>
               <div class="ml-3 text-sm">
-                <label for="everyone" class="font-medium text-gray-700">Everyone</label>
+                <label for="everyone" class="font-medium text-white">Everyone</label>
               </div>
             </div>
 
@@ -155,7 +166,7 @@
 
         <div>
           <button type="submit" id="submitBtn" style="display: none"
-            class="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+            class="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700">
             Generate Link
           </button>
         </div>
@@ -164,9 +175,9 @@
       <div class="-space-y-px rounded-md shadow-sm" id="linkContainer">
         <div class="flex">
           <input type="text" name="channel" readonly id="linkInput"
-            class="relative block w-full appearance-none rounded-none rounded-l-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+            class="focus:outline-none relative block w-full appearance-none rounded-none rounded-l-md border border-gray-300 px-3 py-2 text-white bg-gray-900 placeholder-gray-500 sm:text-sm">
           <button id="copyBtn"
-            class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500">
+            class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 bg-gray-800 px-3 text-sm text-white">
             <span style="height: 1.3rem; width: 1.3rem;">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                 stroke="currentColor" className="w-6 h-6">
@@ -176,6 +187,10 @@
             </span>
           </button>
         </div>
+
+        <p class="mt-2 text-center text-sm text-white">
+          Add the link above to your OBS as a browser source with 1280 width and 720 height.
+        </p>
       </div>
     </div>
   </div>
