@@ -15,6 +15,7 @@
   <script src="./scripts.js"></script>
   <script>
     var allowed = urlParams.get('allowed');
+    var replier = urlParams.get('replier');
 
     ComfyJS.onCommand = (user, command, message, flags, extra) => {
       var isAllowed = allowed === 'everyone' || allowed.split(',').some(_allowed => flags[_allowed]);
@@ -25,13 +26,14 @@
           message = getYoutubeId(message);
         } catch (err) { /* Not a url */ }
 
+        if (replier) ComfyJS.Say(`@${user} played https://youtu.be/${message}`);
         queue.push(message);
         playQueue();
       } else if (command === 'ytstop' && (flags.broadcaster || flags.mod)) { // Only broadcaster & mod can stop
         resetPlayer();
       }
     };
-    ComfyJS.Init(channel);
+    ComfyJS.Init(channel, replier);
 
   </script>
 </body>

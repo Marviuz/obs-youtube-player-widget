@@ -15,6 +15,7 @@
   <script src="./scripts.js"></script>
   <script>
     var rewardId = urlParams.get('rewardId');
+    var replier = urlParams.get('replier');
 
     ComfyJS.onChat = (user, message, flags, self, extra) => {
       if (flags.customReward && extra.customRewardId === rewardId) {
@@ -22,11 +23,13 @@
           new URL(message); // Check if it's a URL
           message = getYoutubeId(message);
         } catch (err) { /* Not a url */ }
+
+        if (replier) ComfyJS.Say(`@${user} played https://youtu.be/${message}`);
         queue.push(message);
         playQueue();
       }
     };
-    ComfyJS.Init(channel);
+    ComfyJS.Init(channel, replier);
   </script>
 </body>
 

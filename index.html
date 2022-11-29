@@ -73,6 +73,23 @@
           </div>
         </div>
 
+        <div class="-space-y-px rounded-md shadow-sm">
+          <div>
+            <label for="channelName" class="contents text-base font-medium text-white">Replier</label>
+            <p class="text-sm text-white mb-2 mt-1">
+              You can leave this blank, but to get notifications from the bot (<em>e.g. @user played
+                https://youtu.be/videoId</em>)
+              you can fill this up by authorizing your account or your bot's account to
+              <a href="http://twitchapps.com/tmi/" class="text-blue-300">http://twitchapps.com/tmi/</a>
+              and paste the code below.
+            </p>
+            <div class="contents text-base font-medium text-white">Example code</div>
+            <code
+              class="text-white bg-gray-900 block px-2 py-1 mb-2 rounded-md">oauth:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code>
+            <input type="text" placeholder="Replier" name="replier"
+              class="focus:outline-none relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 sm:text-sm bg-gray-900 text-white">
+          </div>
+        </div>
 
         <div id="rewardIdContainer" class="-space-y-px rounded-md shadow-sm">
           <label for="rewardId" class="contents text-base font-medium text-white">Channel Points reward ID</label>
