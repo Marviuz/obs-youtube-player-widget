@@ -14,10 +14,11 @@
   </div>
   <script src="./scripts.js"></script>
   <script>
-    var allowed = urlParams.get('allowed').split(',');
+    var allowed = urlParams.get('allowed');
 
     ComfyJS.onCommand = (user, command, message, flags, extra) => {
-      var isAllowed = allowed === 'everyone' || allowed.some(_allowed => flags[_allowed]);
+      var isAllowed = allowed === 'everyone' || allowed.split(',').some(_allowed => flags[_allowed]);
+
       if (command === "ytwatch" && (flags.broadcaster || isAllowed)) {
         try {
           new URL(message); // Check if it's a URL
